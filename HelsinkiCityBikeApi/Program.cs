@@ -1,4 +1,9 @@
+using HelsinkiCityBikeApi.Converters;
+
 var builder = WebApplication.CreateBuilder(args);
+
+DataConverter.GetJourneyDataFromCSV("2021-05.csv");
+DataConverter.GetStationDataFromCSV("Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
 
 // Add services to the container.
 
@@ -9,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Cors for the client
 app.UseCors(options =>
 options.WithOrigins("http://localhost:7000")
 .AllowAnyMethod()
