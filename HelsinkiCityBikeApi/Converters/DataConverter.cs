@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using HelsinkiCityBikeApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 namespace HelsinkiCityBikeApi.Converters
@@ -10,32 +11,37 @@ namespace HelsinkiCityBikeApi.Converters
         /// Gathers the journey data from the csv -files
         /// </summary>
         /// <param name="file">File name</param>
-        public static void GetJourneyDataFromCSV(string file)
+        public static List<Journey> GetJourneyDataFromCSV(string file)
         {
             using var reader = new StreamReader("./Data/csv/" + file);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            //DataConverter.RemoveIncorrectValuesFromCSV(csv);
             csv.Context.RegisterClassMap<JourneyMap>();
             var records = csv.GetRecords<Journey>();
+            List<Journey> JourneyList = new();
             foreach (var record in records)
             {
-                Console.WriteLine(record.Departure);
+                if (record.Distance >= 10)
+                {
+                    JourneyList.Add(record);
+                }
             }
+
+            return JourneyList;
         }
 
         /// <summary>
         /// Gathers the station data from the csv -files
         /// </summary>
         /// <param name="file">File name</param>
-        public static void GetStationDataFromCSV(string file)
+        public static List<Station> GetStationDataFromCSV(string file)
         {
             using var reader = new StreamReader("./Data/csv/" + file);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            
             csv.Context.RegisterClassMap<StationMap>();
             var records = csv.GetRecords<Station>();
-            foreach (var record in records)
-            {
-                Console.WriteLine(record.Name);
-            }
+            return records.ToList();
         }
     }
 }

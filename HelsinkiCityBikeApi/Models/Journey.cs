@@ -19,9 +19,9 @@ namespace HelsinkiCityBikeApi.Models
         [Required]
         public string ReturnStationName { get; set; }
         [Required]
-        public float Distance { get; set; }
+        public float? Distance { get; set; }
         [Required]
-        public int Duration { get; set; }
+        public int? Duration { get; set; }
 
     }
 }

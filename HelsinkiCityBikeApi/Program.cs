@@ -1,3 +1,4 @@
+using HelsinkiCityBikeApi.Controllers;
 using HelsinkiCityBikeApi.Converters;
 using HelsinkiCityBikeApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //DataConverter.GetJourneyDataFromCSV("2021-05.csv");
 //DataConverter.GetStationDataFromCSV("Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
+
+//var journeys = DataConverter.GetJourneyDataFromCSV("2021-05.csv");
 
 // Add services to the container.
 
@@ -40,4 +43,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Seed();
 app.Run();
