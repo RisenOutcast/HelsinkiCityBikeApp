@@ -12,15 +12,13 @@ namespace HelsinkiCityBikeApi.Converters
         /// <param name="file">File name</param>
         public static void GetJourneyDataFromCSV(string file)
         {
-            using (var reader = new StreamReader("./Data/csv/" + file))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using var reader = new StreamReader("./Data/csv/" + file);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            csv.Context.RegisterClassMap<JourneyMap>();
+            var records = csv.GetRecords<Journey>();
+            foreach (var record in records)
             {
-                csv.Context.RegisterClassMap<JourneyMap>();
-                var records = csv.GetRecords<Journey>();
-                foreach (var record in records)
-                {
-                    Console.WriteLine(record.Departure);
-                }
+                Console.WriteLine(record.Departure);
             }
         }
 
@@ -30,15 +28,13 @@ namespace HelsinkiCityBikeApi.Converters
         /// <param name="file">File name</param>
         public static void GetStationDataFromCSV(string file)
         {
-            using (var reader = new StreamReader("./Data/csv/" + file))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using var reader = new StreamReader("./Data/csv/" + file);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            csv.Context.RegisterClassMap<StationMap>();
+            var records = csv.GetRecords<Station>();
+            foreach (var record in records)
             {
-                csv.Context.RegisterClassMap<StationMap>();
-                var records = csv.GetRecords<Station>();
-                foreach (var record in records)
-                {
-                    Console.WriteLine(record.Name);
-                }
+                Console.WriteLine(record.Name);
             }
         }
     }

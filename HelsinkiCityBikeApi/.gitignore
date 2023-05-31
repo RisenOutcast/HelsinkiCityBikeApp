@@ -5,6 +5,10 @@
 # csv files
 *.csv
 
+# Temperary database files
+*.db-shm
+*.db-wal
+
 *.com
 *.class
 *.dll

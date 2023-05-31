@@ -7,9 +7,9 @@ namespace HelsinkiCityBikeApi.Models
         [Required]
         public long Id { get; set; }
         [Required]
-        public string Departure { get; set; }
+        public DateTime Departure { get; set; }
         [Required]
-        public string Return { get; set; }
+        public DateTime Return { get; set; }
         [Required]
         public int DepartureStationId { get; set; }
         [Required]
