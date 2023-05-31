@@ -20,5 +20,13 @@ namespace HelsinkiCityBikeApi.Controllers
             var journeys = journeyContext.Journeys.Skip(startIndex).Take(numberOfItems).AsQueryable();
             return journeys.ToList();
         }
+
+        // Get max number of items in journey database.
+        [HttpGet("Amount")]
+        public int GetMaxJourneysNumber()
+        {
+            var MaxAmount = journeyContext.Journeys.Count();
+            return MaxAmount;
+        }
     }
 }

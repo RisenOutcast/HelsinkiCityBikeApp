@@ -1,4 +1,5 @@
 import { journeyData } from "./interfaces";
+import "../styles/journey.css";
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
@@ -10,6 +11,21 @@ function formatDate(dateString: string) {
   const minutes = date.getMinutes().toString().padStart(2, "0");
 
   return `${day}.${month}.${year} ${hours}:${minutes}`;
+}
+
+function formatDistance(distance:number){
+    if (distance <= 1000){
+        return distance + ' m'
+    }
+    else {
+        var newDistance = distance / 1000
+        return newDistance.toFixed(2).toString().replace(".",",") + ' km'
+    }
+}
+
+function formatTime(time:number){
+    var minutes:number = time / 60;
+    return minutes.toFixed(0) + ' minuuttia';
 }
 
 var bicycleImage = (
@@ -26,12 +42,16 @@ var bicycleImage = (
 const Journey = (props: any) => {
   return (
     <div key={props.journey.id} className="journeyContainer">
-        {props.journey.id}
-      {bicycleImage}
-      {formatDate(props.journey.departure)} | {props.journey.departureStationId}{" "}
-      |{props.journey.departureStationName} | {props.journey.returnStationId} |
-      {props.journey.returnStationName} | {props.journey.distance} |{" "}
-      {props.journey.duration}
+      <p>{props.journey.id}</p>
+      <p>{formatDate(props.journey.departure)}</p>
+      <p className="station">{props.journey.departureStationId}</p>
+      <p>{props.journey.departureStationName}</p>
+      <div className="bicycle">{bicycleImage}</div>
+      <p>{formatDate(props.journey.return)}</p>
+      <p className="station">{props.journey.returnStationId}</p>
+      <p>{props.journey.returnStationName}</p>
+      <p>Matka: {formatDistance(props.journey.distance)}</p>
+      <p>Kesto: {formatTime(props.journey.duration)}</p>
     </div>
   );
 };
