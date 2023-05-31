@@ -13,13 +13,20 @@ namespace HelsinkiCityBikeApi.Controllers
             stationContext = _stationContext;
         }
 
-        // Get all stations or if there are parameters, filter some books.
+        // Get all stations or if there are parameters, only some of them.
         [HttpGet("")]
-        public ActionResult<List<Station>> GetStrings()
+        public ActionResult<List<Station>> GetStrings(int? startIndex, int? numberOfItems)
         {
-            var stations = stationContext.Stations.AsQueryable();
-
-            return stations.ToList();
+            if(startIndex.HasValue && numberOfItems.HasValue)
+            {
+                var stations = stationContext.Stations.Skip((int)startIndex).Take((int)numberOfItems).AsQueryable();
+                return stations.ToList();
+            }
+            else
+            {
+                var stations = stationContext.Stations.AsQueryable();
+                return stations.ToList();
+            }
         }
     }
 }

@@ -15,10 +15,9 @@ namespace HelsinkiCityBikeApi.Controllers
 
         // Get all journeys or if there are parameters, filter some books.
         [HttpGet("")]
-        public ActionResult<List<Journey>> GetStrings()
+        public ActionResult<List<Journey>> GetJourneys(int startIndex, int numberOfItems)
         {
-            var journeys = journeyContext.Journeys.AsQueryable();
-
+            var journeys = journeyContext.Journeys.Skip(startIndex).Take(numberOfItems).AsQueryable();
             return journeys.ToList();
         }
     }

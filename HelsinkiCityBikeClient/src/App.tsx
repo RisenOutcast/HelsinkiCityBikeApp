@@ -1,63 +1,58 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import { journeyData } from "./components/interfaces";
+import Journey from "./components/journey";
 import "./App.css";
 
 import { ENDPOINTS, API_URL } from "./api";
 
-interface weatherData {
-  id: number;
-  date: string;
-  summary: string;
-  temperatureC: number;
-  temperatureF: number;
-}
-
 function App() {
-  const [weather, setWeather]:Array<any> = useState([]);
+  const [data, setData]: Array<any> = useState([]);
+  const [startIndex, setStartIndex]: any = useState(0);
+  const numberOfItems:number = 25;
 
   const fetchData = async () => {
-    const response = await fetch(API_URL + ENDPOINTS.weather);
+    var url =
+      API_URL +
+      ENDPOINTS.journeys +
+      "?startIndex=" +
+      startIndex +
+      "&numberOfItems=" +
+      numberOfItems;
+    const response = await fetch(url);
     const data = await response.json();
 
-    const fetchedData = []
+    const fetchedData = [];
 
     for (const key in data) {
-      fetchedData.push({
-        id: key,
-        date: data[key].date,
-        summary: data[key].summary,
-        temperatureC: data[key].temperatureC,
-        temperatureF: data[key].temperatureF,
-      });
+      fetchedData.push(data[key]);
     }
 
-    setWeather(fetchedData);
-    console.log(fetchedData)
+    setData(fetchedData);
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData();;
+  }, [startIndex]);
+
+  const backButton = async (event: any) => {
+    if (startIndex !== 0) {
+      setStartIndex(startIndex - 25);
+    }
+  };
+
+  const nextButton = async (event: any) => {
+    setStartIndex(startIndex + 25);
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      {weather.map((wData:weatherData) => (
-          <p>{wData.date}</p>
-        ))}
+      {data.map((wData: journeyData) => (
+        <div key={wData.id}>
+          <Journey journey={wData} />
+        </div>
+      ))}
+      <button onClick={backButton}>Previous</button>
+      <button onClick={nextButton}>Next</button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 export const API_URL = 'https://localhost:7001/';
 
 export const ENDPOINTS = {
-    weather: 'WeatherForecast'
+    weather: 'WeatherForecast',
+    journeys: 'Journey'
 }
