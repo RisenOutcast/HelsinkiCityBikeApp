@@ -41,7 +41,7 @@ namespace HelsinkiCityBikeApi.Converters
         /// <param name="file">File name</param>
         public static List<Station> GetStationDataFromCSV(string file)
         {
-            using var reader = new StreamReader("./Data/csv/" + file);
+            using var reader = new StreamReader("./Data/" + file);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             
             csv.Context.RegisterClassMap<StationMap>();
