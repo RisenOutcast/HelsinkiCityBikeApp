@@ -28,5 +28,21 @@ namespace HelsinkiCityBikeApi.Controllers
             var MaxAmount = journeyContext.Journeys.Count();
             return MaxAmount;
         }
+
+        // Get number of journeys that started from a specific station
+        [HttpGet("DepartureStation")]
+        public int GetJourneysDepartureNumberByStation(long stationId)
+        {
+            var journeys = journeyContext.Journeys.Where(journey => journey.DepartureStationId == stationId);
+            return journeys.Count();
+        }
+
+        // Get number of journeys that ended in a specific station
+        [HttpGet("ReturnStation")]
+        public int GetJourneysReturnNumberByStation(long stationId)
+        {
+            var journeys = journeyContext.Journeys.Where(journey => journey.ReturnStationId == stationId);
+            return journeys.Count();
+        }
     }
 }

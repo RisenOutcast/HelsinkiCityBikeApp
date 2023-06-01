@@ -17,7 +17,7 @@ const JourneysPage = () => {
     const fetchMaxAmount = async () => {
       var url =
         API_URL +
-        ENDPOINTS.amount
+        ENDPOINTS.journeysAmount
         var data;
         try {
           const response = await fetch(url);
@@ -94,9 +94,13 @@ const JourneysPage = () => {
     const loader = <div className="loaderContainer"><div className="loader"></div></div>
   return (
     <div className="App">
-      {data.map((wData: journeyData) => (
-        <div key={wData.id}>
-          <Journey journey={wData} />
+        <h1>Matkat</h1>
+        {!loadingState && <p>Näytetään matkat {startIndex + 1} - {startIndex + numberOfItems} (yht. {maxAmount})</p>}
+        <button onClick={backButton}>Edellinen</button>
+        <button onClick={nextButton}>Seuraava</button>
+      {data.map((jData: journeyData) => (
+        <div key={jData.id}>
+          <Journey journey={jData} />
         </div>
       ))}
       {loadingState && loader}

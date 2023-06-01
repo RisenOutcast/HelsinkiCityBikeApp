@@ -27,6 +27,12 @@
     height: 1.5rem;
 }
 
+.journeyContainer .station:hover {
+    border-color: darkgray;
+    color: darkgray;
+    cursor: pointer;
+}
+
 .journeySubContainer {
     display: flex;
     flex-direction: column;
@@ -34,6 +40,10 @@
     width: 15rem;
 }
 
+.journeyContainer .stationNameClickable:hover{
+    cursor: pointer;
+    color: darkgray;
+}
 
 @keyframes slideIn {
     0% {

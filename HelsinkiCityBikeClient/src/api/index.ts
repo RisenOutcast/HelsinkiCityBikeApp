@@ -3,5 +3,10 @@ export const API_URL = 'https://localhost:7001/';
 export const ENDPOINTS = {
     weather: 'WeatherForecast',
     journeys: 'Journey',
-    amount: 'Journey/Amount'
+    journeysAmount: 'Journey/Amount',
+    journeysDepartureStation: 'Journey/DepartureStation',
+    journeysReturnStation: 'Journey/ReturnStation',
+    stations: 'Station',
+    stationsAmount: 'Station/Amount',
+    singleStation: 'Station/'
 }

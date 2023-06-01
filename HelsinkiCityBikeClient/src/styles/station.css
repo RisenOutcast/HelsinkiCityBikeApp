@@ -1,0 +1,93 @@
+.stationSmallContainer {
+    background-color: rgb(35, 35, 56);
+    width: 60rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    color: aliceblue;
+    font-weight: 700;
+    animation: 1s ease-out 0s 1 slideIn;
+    text-align: start;
+}
+
+.stationSmallContainer p  {
+    width: 17rem;
+}
+
+.stationSmallContainer h2 {
+    width: 25rem;
+    margin-right: 1rem;
+}
+
+.stationSmallContainer .stationNumber {
+    width: 5rem;
+}
+
+.stationSmallContainer svg {
+    filter: invert();
+    width: 2rem;
+    margin-left: 2rem;
+}
+
+/* Big station page */
+.bigStationNumber{
+    margin-left: auto;
+    margin-right: auto;
+    border-color: whitesmoke;
+    border-width: 0.25rem;
+    border-style: solid;
+    border-radius: 1rem;
+    width: 5rem;
+    height: 3rem;
+}
+
+.stationContainer {
+    background-color: rgb(35, 35, 56);
+    width: 60rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    color: aliceblue;
+    font-weight: 700;
+    animation: 1s ease-out 0s 1 slideIn;
+    text-align: start;
+}
+
+.stationTitleContainer {
+    background-color: rgb(35, 35, 56);
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    color: aliceblue;
+    font-weight: 700;
+    animation: 1s ease-out 0s 1 slideIn;
+    text-align: start;
+    line-height: 0rem;
+}
+
+.stationContainer svg {
+    filter: invert();
+}
+
+.stationSubContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    text-align: center;
+}

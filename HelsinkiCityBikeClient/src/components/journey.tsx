@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import "../styles/journey.css";
 
 function formatDate(dateString: string) {
@@ -37,7 +38,19 @@ var bicycleImage = (
   </svg>
 );
 
+
+
 const Journey = (props: any) => {
+    const history = useHistory();
+
+    const departureHandler = () => {
+        history.push("/station/" + props.journey.departureStationId);
+    }
+
+    const returnHandler = () => {
+        history.push("/station/" + props.journey.returnStationId);
+    }
+
   return (
     <div key={props.journey.id} className="journeyContainer">
       <p>{props.journey.id}</p>
@@ -46,14 +59,14 @@ const Journey = (props: any) => {
         <p>Lopetus: {formatDate(props.journey.return)}</p>
       </div>
       <div className="journeySubContainer">
-        <p className="station">{props.journey.departureStationId}</p>
-        <p>{props.journey.departureStationName}</p>
+        <p onClick={departureHandler} className="station">{props.journey.departureStationId}</p>
+        <p onClick={departureHandler} className="stationNameClickable">{props.journey.departureStationName}</p>
       </div>
 
       <div className="bicycle">{bicycleImage}</div>
       <div className="journeySubContainer">
-        <p className="station">{props.journey.returnStationId}</p>
-        <p>{props.journey.returnStationName}</p>
+        <p onClick={returnHandler} className="station">{props.journey.returnStationId}</p>
+        <p onClick={returnHandler} className="stationNameClickable">{props.journey.returnStationName}</p>
       </div>
       <div className="journeySubContainer">
         <p>Matkan pituus: {formatDistance(props.journey.distance)}</p>

@@ -9,7 +9,16 @@
 button {
     width: 7rem;
     height: 2rem;
-    margin: 1rem
+    margin: 1rem;
+    color: whitesmoke;
+    background-color: rgb(67, 67, 108);
+    border-color: rgb(35, 35, 56);
+    border-radius: 0.5rem;
+}
+
+button:hover {
+    background-color: rgb(95, 95, 136);
+    cursor: pointer;
 }
 
 
