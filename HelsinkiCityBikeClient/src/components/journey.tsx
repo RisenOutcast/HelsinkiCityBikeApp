@@ -1,4 +1,3 @@
-import { journeyData } from "./interfaces";
 import "../styles/journey.css";
 
 function formatDate(dateString: string) {
@@ -13,19 +12,18 @@ function formatDate(dateString: string) {
   return `${day}.${month}.${year} ${hours}:${minutes}`;
 }
 
-function formatDistance(distance:number){
-    if (distance <= 1000){
-        return distance + ' m'
-    }
-    else {
-        var newDistance = distance / 1000
-        return newDistance.toFixed(2).toString().replace(".",",") + ' km'
-    }
+function formatDistance(distance: number) {
+  if (distance <= 1000) {
+    return distance + " m";
+  } else {
+    var newDistance = distance / 1000;
+    return newDistance.toFixed(2).toString().replace(".", ",") + " km";
+  }
 }
 
-function formatTime(time:number){
-    var minutes:number = time / 60;
-    return minutes.toFixed(0) + ' minuuttia';
+function formatTime(time: number) {
+  var minutes: number = time / 60;
+  return minutes.toFixed(0) + " minuuttia";
 }
 
 var bicycleImage = (
@@ -43,15 +41,24 @@ const Journey = (props: any) => {
   return (
     <div key={props.journey.id} className="journeyContainer">
       <p>{props.journey.id}</p>
-      <p>{formatDate(props.journey.departure)}</p>
-      <p className="station">{props.journey.departureStationId}</p>
-      <p>{props.journey.departureStationName}</p>
+      <div className="journeySubContainer">
+        <p>Lähtö: {formatDate(props.journey.departure)}</p>
+        <p>Lopetus: {formatDate(props.journey.return)}</p>
+      </div>
+      <div className="journeySubContainer">
+        <p className="station">{props.journey.departureStationId}</p>
+        <p>{props.journey.departureStationName}</p>
+      </div>
+
       <div className="bicycle">{bicycleImage}</div>
-      <p>{formatDate(props.journey.return)}</p>
-      <p className="station">{props.journey.returnStationId}</p>
-      <p>{props.journey.returnStationName}</p>
-      <p>Matka: {formatDistance(props.journey.distance)}</p>
-      <p>Kesto: {formatTime(props.journey.duration)}</p>
+      <div className="journeySubContainer">
+        <p className="station">{props.journey.returnStationId}</p>
+        <p>{props.journey.returnStationName}</p>
+      </div>
+      <div className="journeySubContainer">
+        <p>Matkan pituus: {formatDistance(props.journey.distance)}</p>
+        <p>Matkan kesto: {formatTime(props.journey.duration)}</p>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,135 @@
+.navbar {
+    background-color: rgb(67, 67, 108);
+    padding: 0.1rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    color: whitesmoke;
+}
+
+.navbar h2 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.navbar nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+
+.navbar svg {
+    height: 3rem;
+    margin-left: 1rem;
+    margin-top: 0.7rem;
+    filter: invert();
+}
+
+.navbarTitle {
+    display: flex;
+}
+
+.navElement {
+    color: whitesmoke;
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.navElement svg {
+    height: 1.5rem;
+    vertical-align: text-bottom;
+}
+
+.navElement:hover {
+    color: aqua;
+    cursor: pointer;
+}
+
+.navElementRight:hover {
+    color: aqua;
+    cursor: pointer;
+}
+
+.hamburger-button-container {
+    position: fixed;
+    top: 0rem;
+    right: 2rem;
+    z-index: 99;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: invert();
+  }
+  
+  .activate-nav-button,
+  .deactivate-nav-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 99;
+    background-color: #00000000;
+    border: 0rem;
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  .activate-nav-button svg,
+  .deactivate-nav-button svg {
+    z-index: 99;
+    height: 3rem;
+    width: 3rem;
+  }
+
+  /* Mobile responsivess */
+@media screen and (max-width: 1200px) {
+
+    .navbar {
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+    }
+
+    .navbar nav {
+        flex-direction: column;
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .navbarTitle {
+        margin-top: 4rem;
+    }
+
+    .navbarItems {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navElement {
+        padding-top: 1rem;
+    }
+
+    .activate-nav-button,
+    .deactivate-nav-button {
+      display: block;
+    }
+  
+  }
+
+  @media screen and (max-width: 700px) {
+    .navbar nav {
+        align-items: start;
+    }
+  }

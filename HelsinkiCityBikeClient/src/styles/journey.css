@@ -8,9 +8,10 @@
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     color: aliceblue;
-    font-weight: 1000;
+    font-weight: 700;
+    animation: 1s ease-out 0s 1 slideIn;
 }
 
 .journeyContainer .bicycle {
@@ -23,5 +24,22 @@
     border-style: solid;
     border-radius: 1rem;
     width: 3rem;
-    height: 2rem;
+    height: 1.5rem;
 }
+
+.journeySubContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+}
+
+
+@keyframes slideIn {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
