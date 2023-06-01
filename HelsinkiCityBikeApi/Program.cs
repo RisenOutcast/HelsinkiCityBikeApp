@@ -5,13 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//DataConverter.GetJourneyDataFromCSV("2021-05.csv");
-//DataConverter.GetStationDataFromCSV("Helsingin_ja_Espoon_kaupunkipyöräasemat_avoin.csv");
-
-//var journeys = DataConverter.GetJourneyDataFromCSV("2021-05.csv");
-
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddDbContext<JourneyContext>(options =>
    options.UseSqlite(builder.Configuration.GetConnectionString("JourneysDB")));

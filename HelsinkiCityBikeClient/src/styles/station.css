@@ -15,6 +15,11 @@
     text-align: start;
 }
 
+.stationSmallContainer:hover{
+    background-color: rgb(95, 95, 136);
+    cursor: pointer;
+}
+
 .stationSmallContainer p  {
     width: 17rem;
 }
